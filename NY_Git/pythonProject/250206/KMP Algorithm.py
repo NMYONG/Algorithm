@@ -25,3 +25,38 @@ def kmp(t, p):
         if j == M: # 패턴을 찾을 경우
             print(i-M)
             j = lps[j] # 계속해서 검색을 위해 초기화
+
+
+# 강사님 설명
+def make(p):
+    M = len(p)
+    j = 0
+    for i in range(1, M):
+        lps[i] = j
+        if p[i] == p[j]:
+            j += 1
+        else:
+            j = 0
+
+def find(p, t):
+    N = len(t)
+    M = len(p)
+    ti = pi = 0
+
+    while ti < N and pi < M:
+        if pi == -1 or t[ti] == p [pi]:
+            ti += 1
+            pi += 1
+        else:
+            pi = lps[pi]
+    if pi == M:
+        return ti - pi
+    else:
+        return -1
+
+
+t = 'zzabcdabcefgg'
+p = 'abcdabcef'
+
+
+lps = [-1] * len(p)
