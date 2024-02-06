@@ -40,7 +40,7 @@ for tc in range(1, T+1):
     arr = [list(input()) for _ in range(N)]
     reps = N - M + 1
 
-    # 열에 대해
+    # 행에 대해
     for i in range(N):
         for j in range(reps):
             forward_lst_row = arr[i][j:M+j]
@@ -49,7 +49,7 @@ for tc in range(1, T+1):
             if forward_lst_row == reverse_lst_row:
                 answer = ''.join(forward_lst_row)
 
-    # 행에 대해
+    # 열에 대해
     for i in range(N):
         forward_lst_col = []
         for j in range(reps):
