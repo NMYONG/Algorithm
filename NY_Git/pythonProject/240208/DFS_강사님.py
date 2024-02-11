@@ -51,7 +51,7 @@ def dfs(start):
                 STACK.append(w)
                 visited[w] = True # 재방문 하지 않기 위해서 True로 설정
 
-N = 7 # 노드의 개수 (Node)`
+N = 7 # 노드의 개수 (Node)
 E = len(l) # 경로의 개수 * 2 (Edge)
 G = [[] for _ in range(N+1)] # 리스트는 인덱스가 0부터 시작하므로 N+1 (Graph)
 # G = [[], [], [], [], [], [], [], []]
@@ -62,5 +62,6 @@ for i in range(0, E, 2): # i = 0, 2, 4, 6, ...
 
     G[v1].append(v2) # 방향이 있을 경우
     G[v2].append(v1) # 방향이 없는 경우(양방향)
+    
 print(G)
 dfs(1)
