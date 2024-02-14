@@ -4,26 +4,53 @@ s = '2+3*4/5'
 stack = []
 result = []
 
-pri = {'+': 1,           # 우선순위
-       '*': 2,
+pri = {'+': 1,
        '-': 1,
+       '*': 2,
        '/': 2}
 
-for c in s:
-    if c.isdigit():      # 숫자일 때
-        result.append(c)
-    else:
-        if stack and pri[stack[-1]] < pri[c]:
+def makePostfix(s):
+    for c in s:
+        if c.isdigit():
+            result.append(c)
+        else:
+            if stack and pri[stack[-1]] < pri[c]:
+                stack.append(c)
+            else:
+                while stack and pri[stack[-1]] >= pri[c]:
+                    result.append(stack.pop())
+                stack.append(c)
+
+    while stack:
+        result.append(stack.pop())
+
+    return result
+
+def calPostfix(lst):
+    stack = []
+
+    for c in lst:
+        if c.isdigit():
             stack.append(c)
         else:
-            while stack and pri[stack[-1]] >= pri[c]: # stack의 연산자가 더 크거나 같을 때
-                result.append(stack.pop())
-            stack.append(c)
+            v2 = stack.pop()
+            v1 = stack.pop()
 
-while stack:
-    result.append(stack.pop())
+            stack.append(cal(int(v1), int(v2), c))
 
-print(result)
+    return stack.pop()
+
+def cal(v1, v2, op):
+    if op == '+':
+        return v1 + v2
+    elif op == '-':
+        return v1 - v2
+    elif op == '*':
+        return v1 * v2
+    else:
+        return v1 // v2
+
+print(calPostfix(makePostfix(s)))
 
 
 
