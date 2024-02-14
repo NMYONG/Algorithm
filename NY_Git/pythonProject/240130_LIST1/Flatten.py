@@ -1,5 +1,5 @@
-import sys
-sys.stdin = open("240130/1209.txt", "r")
+# import sys
+# sys.stdin = open("240130/1209.txt", "r")
 
 # min 함수
 def my_min(lst):

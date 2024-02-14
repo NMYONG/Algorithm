@@ -15,7 +15,7 @@ def dfs(i, V): # 시작 i, 마지막 V
         for w in adjl[i]:           # 현재 방문한 정점에 인접, 방문 안 한 정짐 w가 있으면
             if visited[w] == 0:     # 방문하지 않았으면
                 stack.append(i)     # push(i), i를 지나서
-                i = w              # w에 방문
+                i = w               # w에 방문
                 visited[i] = 1      # 방문했다고 표시
                 print(i)
                 break               # for에 대한 break
@@ -33,7 +33,8 @@ arr = list(map(int, input().split()))
 adjl = [[] for _ in range(V+1)] # adjl[i] 행에 i에 인접한 정점번호
 for i in range(E):
     n1, n2 = arr[i*2], arr[i*2+1]
+
     adjl[n1].append(n2)
-    adjl[n2].append(n1) # 방향이 없는 경우
+    adjl[n2].append(n1)
 
 dfs(1, V)
