@@ -5,7 +5,7 @@ def getStart(graph):
     for i in range(N):
         for j in range(N):
             if graph[i][j] == 2:
-                start_r, start_c = (i, j)
+                start_r, start_c = i, j
                 return start_r, start_c
 
 def bfs(start_r, start_c):

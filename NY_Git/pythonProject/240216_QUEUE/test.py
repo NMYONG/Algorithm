@@ -1,39 +1,39 @@
-def getStart(graph):
-    for i in range(16):
-        for j in range(16):
-            if graph[i][j] == 2:
-                start_r, start_c = i, j
-                return start_r, start_c
+# 후위 연산자로 변경
 
-def bfs(start_r, start_c):
-    Q = []
-    visited = [[False] * 16 for _ in range(16)]
-
-    Q.append((start_r, start_c))
-    visited[start_r][start_c] = True
-
-    while Q:
-        vr, vc = Q.pop(0)
-
-        for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
-            new_r = vr + dr
-            new_c = vc + dc
-
-            if 0 <= new_r < 16 and 0 <= new_c < 16:
-                if graph[new_r][new_c] == 3:
-                    return 1
-                if graph[new_r][new_c] != 1 and not visited[new_r][new_c]:
-                    Q.append((new_r, new_c))
-                    visited[new_r][new_c] = True
-    return 0
+expression = input()
 
 
-for _ in range(2):
-    tc = int(input())
-    graph = [list(map(int, input())) for _ in range(16)]
 
-    start_r, start_c = getStart(graph)
-    result = bfs(start_r, start_c)
+def getPostfit(s):
+    stack = []
+    result = []
 
-    print(f'#{tc}')
-    print(result)
+    # 여는 괄호 '('는 스택에 들어갈 때는 다른 연산자보다 낮은 우선순위여야 하므로 isp에서는 0으로 설정
+    icp = {'(': 3, '+': 1, '-': 1, '*': 2, '/': 2}
+    # 다른 연산자가 여는 괄호를 만났을 때 스택에 넣을 때는, 스택 안에 있는 다른 연산자들보다 더 높은 우선순위를 가지게 되어야
+    isp = {'(': 0, '+': 1, '-': 1, '*': 2, '/': 2}
+
+    for c in s:
+        if c.isdigit() or c.isalpha(): # 숫자인 경우
+            result.append(c)
+        elif c == ')':
+            while stack [-1] != '(': # ( 나올 때 까지 pop해서 result에 추가
+                result.append(stack.pop())
+            stack.pop()
+        else: # 연산자인 경우 peak와 비교해서 높으면 스택에 push
+            if stack and isp[stack[-1]] < icp[c]:
+                stack.append(c)
+            else: # peak와 비교해서 낮거나 같으면 pop해서 result에 append
+                while stack and isp[stack[-1]] >= icp[c]:
+                    result.append(stack.pop())
+                stack.append(c)
+
+    while stack:
+        result.append(stack.pop())
+
+    answer = ''.join(result)
+
+    return answer
+
+
+print(getPostfit(expression))

@@ -1,56 +1,56 @@
-# 괄호가 없을 때
-s = '2+3*4/5'
-
-stack = []
-result = []
-
-pri = {'+': 1,
-       '-': 1,
-       '*': 2,
-       '/': 2}
-
-def makePostfix(s):
-    for c in s:
-        if c.isdigit():
-            result.append(c)
-        else:
-            if stack and pri[stack[-1]] < pri[c]:
-                stack.append(c)
-            else:
-                while stack and pri[stack[-1]] >= pri[c]:
-                    result.append(stack.pop())
-                stack.append(c)
-
-    while stack:
-        result.append(stack.pop())
-
-    return result
-
-def calPostfix(lst):
-    stack = []
-
-    for c in lst:
-        if c.isdigit():
-            stack.append(c)
-        else:
-            v2 = stack.pop()
-            v1 = stack.pop()
-
-            stack.append(cal(int(v1), int(v2), c))
-
-    return stack.pop()
-
-def cal(v1, v2, op):
-    if op == '+':
-        return v1 + v2
-    elif op == '-':
-        return v1 - v2
-    elif op == '*':
-        return v1 * v2
-    else:
-        return v1 // v2
-
-print(calPostfix(makePostfix(s)))
+# # 괄호가 없을 때
+# s = '2+3*4/5'
+#
+# stack = []
+# result = []
+#
+# pri = {'+': 1,
+#        '-': 1,
+#        '*': 2,
+#        '/': 2}
+#
+# def makePostfix(s):
+#     for c in s:
+#         if c.isdigit():
+#             result.append(c)
+#         else:
+#             if stack and pri[stack[-1]] < pri[c]:
+#                 stack.append(c)
+#             else:
+#                 while stack and pri[stack[-1]] >= pri[c]:
+#                     result.append(stack.pop())
+#                 stack.append(c)
+#
+#     while stack:
+#         result.append(stack.pop())
+#
+#     return result
+#
+# def calPostfix(lst):
+#     stack = []
+#
+#     for c in lst:
+#         if c.isdigit():
+#             stack.append(c)
+#         else:
+#             v2 = stack.pop()
+#             v1 = stack.pop()
+#
+#             stack.append(cal(int(v1), int(v2), c))
+#
+#     return stack.pop()
+#
+# def cal(v1, v2, op):
+#     if op == '+':
+#         return v1 + v2
+#     elif op == '-':
+#         return v1 - v2
+#     elif op == '*':
+#         return v1 * v2
+#     else:
+#         return v1 // v2
+#
+# print(calPostfix(makePostfix(s)))
 
 
 
@@ -60,23 +60,15 @@ s = '(6+5*(2-8)/2)'
 stack = []
 result = []
 
-isp = {'+': 1,           # 스택 밖에 있을 때 우선순위
-       '*': 2,
-       '-': 1,
-       '/': 2,
-       '(': 100,
-       }
-icp = {'+': 1,           # 스택 안에 있을 때 우선순위
-       '*': 2,
-       '-': 1,
-       '/': 2,
-       '(': -100,
-       }
-
 
 
 # 후위 연산자로 변경
 def step1(s):
+    result = []
+    stack = []
+    isp = {'+': 1, '-': 1, '*': 2, '/': 2, '(': 0}
+    icp = {'+': 1, '-': 1, '*': 2, '/': 2, '(': 3}
+
     for c in s:
         if c.isdigit():      # 피연산자일 때
             result.append(c)
@@ -95,7 +87,9 @@ def step1(s):
     while stack:
         result.append(stack.pop())
 
-    return result
+    answer = ''.join(result)
+
+    return answer
 
 
 def step2(lst):
@@ -122,4 +116,5 @@ def calc(v1, v2, op):
 
 
 post_order = step1(s)
+print(post_order)
 print(step2(post_order))
