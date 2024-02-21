@@ -101,7 +101,7 @@ print()
 postOrder(1)
 
 
-
+# 완전 이진 트리에서만 preOrder(root*2) 사용한다.
 
 
 # 트리에 문자열 넣어서 값 찾기
