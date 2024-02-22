@@ -6,6 +6,21 @@ def postOrder(root):
 
     return TREE[root]
 
+# def postOrder(root):
+#
+#     if root <= N and TREE[root]:
+#         return TREE[root]
+#
+#     v1 = v2 = 0
+#
+#     if root * 2 <= N:
+#         v1 = postOrder(root*2)
+#     if root * 2 + 1 <= N:
+#         v2 = postOrder(root * 2 + 1)
+#     TREE[root] = v1 + v2
+#
+#     return TREE[root]
+
 T = int(input())
 
 for tc in range(1, T+1):

@@ -16,13 +16,14 @@ def minHeap_enqueue(data):
         else:
             break
 
+
 T = int(input())
 
-for tc in range(1, T+1):
+for tc in range(1, T + 1):
     N = int(input())
     lst = list(map(int, input().split()))
 
-    TREE = [0] * (N+1)
+    TREE = [0] * (N + 1)
     last = 0
 
     for data in lst:
@@ -33,8 +34,8 @@ for tc in range(1, T+1):
     # print(TREE[idx])
     total_sum = 0
 
-    while idx != 0 :
-        total_sum += TREE[idx//2]
+    while idx != 0:
+        total_sum += TREE[idx // 2]
         idx = idx // 2
 
     print(f'#{tc} {total_sum}')
