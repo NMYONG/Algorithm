@@ -16,7 +16,6 @@ print()
 
 
 # 인자로 받은 num에 각자리에 3,6,9에 해당하는 숫자가 몇 개인지 반환
-
 def check(num):
     cnt = 0
 
@@ -37,3 +36,18 @@ for i in range(1, N + 1):
     else:
         print(i, end=' ')
 print()
+
+# 내 풀이
+
+N = int(input())
+
+for i in range(1, N + 1):
+    cnt = 0
+    tmp = ['3', '6', '9']
+    for j in str(i):
+        if j in tmp:
+            cnt += 1
+    if cnt > 0:
+        print('-' * cnt, end=' ')
+    else:
+        print(i, end=' ')
