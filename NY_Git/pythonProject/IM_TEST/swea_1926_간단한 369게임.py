@@ -15,10 +15,7 @@ for i in range(1, N + 1):
 print()
 
 
-
-
-
-#인자로 받은 num에 각자리에 3,6,9에 해당하는 숫자가 몇 개인지 반환
+# 인자로 받은 num에 각자리에 3,6,9에 해당하는 숫자가 몇 개인지 반환
 
 def check(num):
     cnt = 0
@@ -29,6 +26,7 @@ def check(num):
             cnt += 1
         num //= 10
     return cnt
+
 
 N = int(input())
 
