@@ -1,31 +1,6 @@
 import sys
 sys.stdin = open('2001.txt', 'r')
 
-
-# # 오답
-# T = int(input())
-#
-# for tc in range(1, T+1):
-#     N, M = map(int, input().split())
-#     arr = [list(map(int, input().split())) for _ in range(N)]
-#
-#     sum_flapper = []
-#     for row in range(N):
-#         for col in range(N):
-#             flapper = 0
-#             for i in range(M):
-#                 for j in range(M):
-#                     if i+row <= N-M+1 and j+col <= N-M+1:
-#                         flapper += arr[i+row][j+col]
-#             sum_flapper.append(flapper)
-#
-#     result = max(sum_flapper)
-#     print(f'#{tc} {result}')
-
-
-
-
-
 # 정답
 T = int(input())  # 테스트 케이스의 수 입력
 
@@ -54,21 +29,22 @@ for tc in range(1, T+1):
 
 
 
+# 내 풀이
+T = int(input())
 
-# # answer not if, use list
-# T = int(input())
-#
-# for tc in range(1, T+1):
-#     N, M = map(int, input().split())
-#     arr = [list(map(int, input().split())) for _ in range(N)]
-#
-#     max_flies = 0
-#     for row in range(N - M + 1):
-#         for col in range(N - M + 1):
-#             total_flies = 0
-#             for i in range(M):
-#                 for j in range(M):
-#                     total_flies += arr[row + i][col + j]
-#             max_flies = max(max_flies, total_flies)
-#
-#     print(f'#{tc} {max_flies}')
+for tc in range(1,  T+1):
+    N, M = map(int, input().split())
+    arr = [list(map(int, input().split())) for _ in range(N)]
+
+    catch = []
+
+    for i in range(N):
+        for j in range(N):
+            if 0 <= i <= N-M and 0 <= j <= N-M:
+                temp = 0
+                for r in range(M):
+                    for c in range(M):
+                        temp += (arr[i+r][j+c])
+                catch.append(temp)
+
+    print(f'#{tc} {max(catch)}')
