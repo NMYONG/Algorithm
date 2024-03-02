@@ -10,7 +10,7 @@ for tc in range(1, T+1):
     answer = 0
     for row in range(N):
         for col in range(M):
-            cnt = 0
+            cnt = 0w
             land = arr[row][col]
 
             dr = [-1, -1, 0, 1, 1, 1, 0, -1]  # 가운데를 기준으로 좌상, 상, 우상, 우, 우하, 하, 좌하, 좌 방향

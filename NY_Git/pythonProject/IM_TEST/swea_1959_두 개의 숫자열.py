@@ -25,3 +25,28 @@ for tc in range(1,T+1):
             sum_max = tmp_sum
 
     print(f'#{tc} {sum_max}')
+
+
+
+
+# 내 풀이
+T = int(input())
+
+for tc in range(1, T+1):
+    N, M = map(int, input().split())
+    A = list(map(int, input().split()))
+    B = list(map(int, input().split()))
+
+    if len(A) > len(B):
+        N, M = M, N
+        A, B = B, A
+
+    max_sum = -999999999
+    for i in range(M-N+1):
+        sum_v = 0
+        for j in range(N):
+            sum_v += A[j] * B[i+j]
+        if sum_v > max_sum:
+            max_sum = sum_v
+
+    print(f'#{tc} {max_sum}')
