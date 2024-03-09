@@ -1,30 +1,44 @@
-dr = [-1, -1, 0, 1, 1, 1, 0, -1]
-dc = [0, 1, 1, 1, 0, -1, -1, -1]
+def dfs(c):
+    ans_dfs.append(c)
+    visited[c] = 1
 
+    for n in adj[c]:
+        if visited[n] == 0:
+            dfs(n)
 
-def dfs(r, c):
-    if dp[r][c] != (r, c):
-        return dp[r][c]
-    dp[r][c] = r, c
-    tmp_v = 30000000
-    for i in range(8):
-        tr, tc = r + dr[i], c + dc[i]
-        if 0 <= tr < R and 0 <= tc < C and board[tr][tc] < board[r][c]:
-            if tmp_v > board[tr][tc]:
-                tmp_v = board[tr][tc]
-                dp[r][c] = dfs(tr, tc)
-    return dp[r][c]
+def bfs(s):
+    q = []
+    q.append(s)
 
+    ans_bfs.append(s)
+    visited[s] = 1
 
-R, C = map(int, input().split())
-board = [list(map(int, input().split())) for _ in range(R)]
-dp = [[(i, j) for j in range(C)] for i in range(R)]
-ball_cnt = [[0]*C for _ in range(R)]
+    while q:
+        n = q.pop(0)
+        for c in adj[n]:
+            if visited[c] == 0:
+                q.append(c)
+                ans_bfs.append(c)
+                visited[c] = 1
 
-for i in range(R):
-    for j in range(C):
-        nr, nc = dfs(i, j)
-        ball_cnt[nr][nc] += 1
+N, M, V = map(int, input().split())
+adj = [[] for _ in range(N+1)]
+for _ in range(M):
+    v1, v2 = map(int, input().split())
 
-for row in ball_cnt:
-    print(*row)
+    adj[v1].append(v2)
+    adj[v2].append(v1)
+
+for i in adj:
+    i.sort()
+
+visited = [0] * (N+1)
+ans_dfs = []
+dfs(V)
+
+visited = [0] * (N+1)
+ans_bfs = []
+bfs(V)
+
+print(*ans_dfs)
+print(*ans_bfs)

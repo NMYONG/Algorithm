@@ -1,47 +1,44 @@
-from collections import deque
+def dfs(c):
+    ans_dfs.append(c)   # 방문한 노드 추가
+    visited[c] = 1      # 방문 표시
 
-def dfs(start):
-    STACK = []
-    visited = [False] * (N+1)
+    for n in adj[c]:    # 방문한 노드에 대해서 연결된 노드들을 검사
+        if visited[n] == 0: # 방문하지 않았으면
+            dfs(n)
 
-    STACK.append(start)
-    visited[start] = True
+def bfs(s):
+    q = []              # 큐 생성
+    q.append(s)
 
-    while STACK:
-        v = STACK.pop()
-        print(v, end=' ')
+    ans_bfs.append(s)
+    visited[s] = 1      # 방문 표시
 
-        for w in sorted(G[v]):
-            if not visited[w]:
-                STACK.append(w)
-                visited[w] = True
-
-def bfs(start):
-    queue = deque()
-    visited = [False] * (N+1)
-
-    queue.append(start)
-    visited[start] = True
-
-    while queue:
-        v = queue.popleft()
-        print(v, end=' ')
-
-        for w in sorted(G[v]):
-            if not visited[w]:
-                queue.append(w)
-                visited[w] = True
+    while q:
+        c = q.pop(0)
+        for n in adj[c]:
+            if visited[n] == 0: # 방문하지 않은 노드라면 q에 삽입
+                q.append(n)
+                ans_bfs.append(n)
+                visited[n] = 1
 
 N, M, V = map(int, input().split())
-G = [[] for _ in range(N+1)]
+adj = [[] for _ in range(N+1)]
 
 for _ in range(M):
     v1, v2 = map(int, input().split())
+    adj[v1].append(v2)
+    adj[v2].append(v1)  # 양방향
 
-    G[v1].append(v2)
-    G[v2].append(v1)
+for i in range(1, N+1): # 오름차순 정렬
+    adj[i].sort()
 
-print(G)
+visited = [0] * (N + 1)
+ans_dfs = []
 dfs(V)
-print()
+
+visited = [0] * (N + 1)
+ans_bfs = []
 bfs(V)
+
+print(*ans_dfs)
+print(*ans_bfs)
