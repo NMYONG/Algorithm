@@ -43,3 +43,12 @@ combi(0, 0, 0)
 
 
 
+# 강사님 풀이
+def combi(k,s ):
+    if k==N//2:
+        값 구하기
+        return
+
+    for i in range(s, N):
+        result[k] = i
+        combi(k+1, )
