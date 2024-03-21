@@ -12,7 +12,6 @@
 
 from heapq import heappop, heappush
 
-
 def dijkstra(start):
     pq = []
 

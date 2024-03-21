@@ -11,21 +11,27 @@ def dijkstra(start):
         if distance[now] < dist:
             continue
 
-        for to in graph[now]:
-            next_dist = to[0]
-            next_node = to[1]
+        for next_dist, next_node in graph[now]:
+            new_dist = dist + next_dist
+
+            if new_dist >= distance[next_node]:
+                continue
+
+            distance[next_node] = new_dist
+            heappush(pq, (new_dist, next_node))
 
 
+T = int(input())
+for tc in range(1, T+1):
+    N, E = map(int, input().split())
+    graph = [[] for _ in range(N+1)]
+    distance = [float('inf')] * (N+1)
 
-INF = float('inf')
+    for _ in range(E):
+        s, e, w = map(int, input().split())
+        graph[s].append((w, e))
 
-V, E = map(int, input().split())
-start = 0
-
-graph = [[] for _ in range(V)]
-distance = [INF] * V
-
-for _ in range(E):
-    s, e, w = map(int, input().split())
-    graph[s].append([w, s])
-
+    # print(graph)
+    # print(distance)
+    dijkstra(0)
+    print(f'#{tc} {distance[N]}')
