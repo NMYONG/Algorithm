@@ -1,27 +1,27 @@
-def bfs(si, sj, ei, ej):
-    q = []
-    v = [[INF] * N for _ in range(N)]
-
-    q.append((si, sj))
-    v[si][sj] = 0  # 값 초기화
-
-    while q:
-        ci, cj = q.pop(0)
-        for dj, di in ((-1, 0), (1, 0), (0, -1), (0, 1)):
-            ni, nj = ci + di, cj + dj
-            if 0 <= ni < N and 0 <= nj < N and v[ni][nj] > v[ci][cj] + 1 + max(arr[ni][nj] - arr[ci][cj], 0):
-                q.append((ni, nj))
-                v[ni][nj] = v[ci][cj] + 1 + max(arr[ni][nj] - arr[ci][cj], 0)
-    return v[ei][ej]
+# 2진수 문자열을 10진수로
+def binToDec(s):
+    result = 0
+    for c in s:
+        result = result*2 + int(c)
+    return result
 
 
-T = int(input())
+# 10진수 문자열을 2진수로
+def decToBin(intV):
+    s = ''
+    while intV > 0:
+        s = str(intV % 2) + s
+        intV //= 2
+    return s
 
-for tc in range(1, T + 1):
-    N = int(input())
-    arr = [list(map(int, input().split())) for _ in range(N)]
-    INF = int(1e6)
+# 16진수 문자열을 2진수로
+def hexToBin(hexS):
+    mapping = {'0': '0000', '1': '0001', '2': '0010', '3': '0011',
+               '4': '0100', '5': '0101', '6': '0110', '7': '0111',
+               '8': '1000', '9': '1001', 'A': '1010', 'B': '1011',
+               'C': '1100', 'D': '1101', 'E': '1110', 'F': '1111'}
 
-    ans = bfs(0, 0, N - 1, N - 1)
-
-    print(f'#{tc} {ans}')
+    s = ''
+    for c in hexS:
+        s += mapping[c]
+    return s
