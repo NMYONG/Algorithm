@@ -16,5 +16,3 @@ T = int(input())
 for tc in range(1, T + 1):
     l, s = input().split()
     print(f'#{tc} {hexToBin(s)}')
-
-

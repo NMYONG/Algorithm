@@ -1,14 +1,13 @@
-# # 10진수 > 2진수
-#
-# tar = 149
-# result = []
-#
-# while tar != 0:
-#     result.append(tar % 2)
-#     tar //= 2
-#
-# result.reverse()
-# print(result)
+# 10진수 > 2진수
+tar = 149
+result = []
+
+while tar != 0:
+    result.append(tar % 2)
+    tar //= 2
+
+result.reverse()
+print(result)
 
 
 # 강사님 설명
@@ -66,16 +65,16 @@ def decToHex(intV):
     return s
 
 # 16진수 문자열을 2진수로
-# def hexToBin(s):
-#     value = hexToDec(s)
-#     binS = decToBin((value))
-#     return binS
+def hexToBin(s):
+    value = hexToDec(s)
+    binS = decToBin((value))
+    return binS
 
-# def hexToBin(hexS):
-#     hexS.replac('0', '0000')
-#     hexS.replac('1', '0001')
-#     ...
-#     return hexS
+def hexToBin(hexS):
+    hexS.replac('0', '0000')
+    hexS.replac('1', '0001')
+    ...
+    return hexS
 
 def hexToBin(hexS):
     mapping = {'0': '0000', '1': '0001', '2': '0010', '3': '0011',
