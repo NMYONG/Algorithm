@@ -1,7 +1,7 @@
 def dfs(idx, arr):
     global answer
 
-    # 치킨집의 개수가 M개가 되면
+    # 기저조건 : 치킨집의 개수가 M개가 될 때
     if len(arr) == M:
         result = 0
 
@@ -30,11 +30,11 @@ def dfs(idx, arr):
 # 입력
 N, M = map(int, input().split())
 maps = [list(map(int, input().split())) for _ in range(N)]
-answer = float('inf')
+answer = float('inf') # 최소값을 구하기 때문에 무한대로 초기화
 chicken = []
 house = []
 
-# 치킨집, 집의 좌표 구하기
+# 치킨집, 집의 좌표 구해서 리스트에 넣기
 for i in range(N):
     for j in range(N):
         if maps[i][j] == 1:

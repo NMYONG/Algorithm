@@ -5,7 +5,7 @@ def bfs(x, y, idx):
     united = []
     united.append((x, y))
 
-    # 큐에 삽입
+    # x, y 큐에 삽입
     q = deque()
     q.append((x, y))
 
@@ -34,7 +34,7 @@ def bfs(x, y, idx):
         arr[i][j] = country_people // country
     return country
 
-
+# 입력
 N, L, R = map(int, input().split())
 arr = [list(map(int, input().split())) for _ in range(N)]
 
@@ -42,18 +42,20 @@ dr = [-1, 1, 0, 0]
 dc = [0, 0, -1, 1]
 answer = 0
 
-# 모든 배열을 방문할 때까지 반복
+# 모든 배열에 대해서 반복
 while True:
-    visited = [[-1] * N for _ in range(N)]
-    idx = 0
+    visited = [[-1] * N for _ in range(N)] # 반복마다 방문배열 초기화
+    idx = 0 # 연합 구분하기 위해서 (첫번쨰 연합, 두번쨰 연합, ...)
+
+    # 모든 배열을 순회하며
     for i in range(N):
         for j in range(N):
-            if visited[i][j] == -1:
-                bfs(i, j, idx)
-                idx += 1
+            if visited[i][j] == -1: # 방문하지 않았으면
+                bfs(i, j, idx) # bfs 실행
+                idx += 1 # bfs 실행 후 다음 차수 연합으로 넘어감
     if idx == N*N:
         break
-    answer += 1
+    answer += 1 # 1번 인구이동 완료
 
 print(answer)
 
