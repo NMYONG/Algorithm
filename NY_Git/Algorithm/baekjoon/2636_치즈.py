@@ -1,4 +1,6 @@
+import sys
 from collections import deque
+input = sys.stdin.readline
 
 # 배열의 합을 구하는 함수
 def make_sum(arr):
@@ -47,7 +49,7 @@ dr, dc = [-1, 1, 0, 0], [0, 0, -1, 1]
 # 단계
 step = 0
 sum_arr = make_sum(arr)
-remain = [0]
+remain = [make_sum(arr)]
 
 while True:
     # 버블이 아닌 빈 공간
