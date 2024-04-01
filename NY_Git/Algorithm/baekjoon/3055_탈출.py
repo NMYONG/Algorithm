@@ -10,11 +10,21 @@ import sys
 from collections import deque
 input = sys.stdin.readline
 
-# 도치가 움직일 수 있는 경로
-def bfs(dochi):
-    q = deque
-    q.append(dochi)
+def dochi_bfs(row, col):
+    q = deque()
+    q.append((row, col))
+    visited[row][col] = 1 # 나중에 1 빼주기
 
+    while q:
+        r, c = q.popleft()
+
+        for d in range(4):
+            nr = r + dr[d]
+            nc = c + dc[d]
+
+            if 0 <= nr < N and 0 <= nc < M and not visited[nr][nc]:
+                q.append((nr, nc))
+                visited[nr][nc] = visited[r][c] + 1
 
 
 N, M = map(int, input().split())
@@ -22,19 +32,24 @@ maps = [list(input()) for _ in range(N)]
 
 dr = [-1, 1, 0, 0]
 dc = [0, 0, -1, 1]
+visited = [[0] * M for _ in range(N)]
 
-# 물, 굴, 도치 좌표 구하기
-mool_r, mool_c = 0, 0
-gool_r, gool_c = 0, 0
-dochi_r, dochi_c = 0, 0
-
+gool_r = 0
+gool_c = 0
 for i in range(N):
     for j in range(M):
-        if maps[i][j] == '*': # 물이면
-            mool_r, mool_c = i, j
         if maps[i][j] == 'D':
-            gool_r, gool_c = i, j
-        if maps[i][j] == 'S':
-            dochi_r, dochi_c = i, j
+            gool_r = i
+            gool_c = j
 
-# 물과 도치가 같이 움직여야 하니까 둘 다 BFS 돌리자
+dochi_r = 0
+dochi_c = 0
+for i in range(N):
+    for j in range(M):
+        if maps[i][j] == 'S':
+            dochi_r = i
+            dochi_c = j
+
+dochi_bfs(dochi_r, dochi_c)
+
+print(visited[gool_r][gool_c])
