@@ -118,21 +118,21 @@
 #         Type1(x+1)
 #         path.pop()
 #
-# # 중복을 제거한 순열
-# path = []
-# used = [False for _ in range(7)]
-# def Type2(x):
-#     if x == 3:
-#         print(path)
-#         return
-#
-#     for i in range(1, 7):
-#         if used[i] == True : continue
-#         used[i] = True
-#         path.append(i)
-#         Type2(x+1)
-#         path.pop()
-#         used[i] = False
+# 중복을 제거한 순열
+path = []
+used = [False for _ in range(7)]
+def Type2(x):
+    if x == 3:
+        print(path)
+        return
+
+    for i in range(1, 7):
+        if used[i] == True : continue
+        used[i] = True
+        path.append(i)
+        Type2(x+1)
+        path.pop()
+        used[i] = False
 #
 #
 # N, type = map(int, input().split())
