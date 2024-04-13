@@ -1,18 +1,6 @@
-def dfs(n, idx, lst):
-    if n == M:
-        ans.append(lst)
-        return
+from itertools import combinations
 
-    for i in range(idx, N):
-        dfs(n + 1, i, lst + [num_lst[i]])
+num_lst = [1, 2, 3, 4, 5, 6]
+op_lst = ['+', '+', '-', '*', '/']
 
-N, M = map(int, input().split())
-num_lst = list(map(int, input().split()))
-
-num_lst.sort()
-ans = []
-
-dfs(0, 0, [])
-
-for i in ans:
-    print(*i)
+print(list(combinations(op_lst, 3)))
