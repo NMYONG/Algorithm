@@ -21,3 +21,5 @@ for j in range(N):
     for a in range(0, N): # 정방향
         pass
 
+
+#
