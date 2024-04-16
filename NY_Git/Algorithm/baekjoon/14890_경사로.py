@@ -135,28 +135,46 @@
 # print(answer)
 
 
-
 # 4트
 import sys
 input = sys.stdin.readline
 
 def check(lst, L):
-    visited = [False] * N
+    visited = [0] * N
     for i in range(N - 1):
 
         # 평평할 때
-        if lst[i] == lst[i+1]:
+        if lst[i] == lst[i + 1]:
             continue
 
         # 높이차이가 1 이상이면 False
-        elif abs(lst[i] - lst[i]) > 1:
+        elif abs(lst[i] - lst[i+1]) > 1:
             return False
 
-        # 올라갈 때
-        elif lst[i] + 1 == lst[i + 1]:
-
-
         # 내려갈 때
+        elif lst[i] > lst[i + 1]:
+            for j in range(i + 1, i + L + 1): # L
+                if j in range(N): # 경사 길이가 범위 내이면
+                    if lst[i+1] != lst[j]: # 높이가 다르면
+                        return False
+                    elif visited[j]: # 이미 경사로가 있으면
+                        return False
+                    visited[j] = 1
+                else: # 경사 범위를 벗어나면
+                    return False
+
+        # 올라갈 때
+        elif lst[i] < lst[i + 1]:
+            for j in range(i, i - L, -1):
+                if j in range(N):
+                    if lst[i] != lst[j]: # 높이가 다르면
+                        return False
+                    elif visited[j]:
+                        return False
+                    visited[j] = True
+                else: # 경사 범위를 벗어나면
+                    return False
+    return True
 
 
 
@@ -166,7 +184,7 @@ arr = [list(map(int, input().split())) for _ in range(N)]
 answer = 0
 
 # 가로
-for i in range(N):
+for i in arr:
     if check(i, L):
         answer += 1
 
@@ -179,25 +197,3 @@ for i in range(N):
         answer += 1
 
 print(answer)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
