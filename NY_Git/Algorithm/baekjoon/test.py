@@ -5,14 +5,29 @@ def bfs(si, sj):
     visited = [[0] * N for _ in range(N)]
     eatableList = []
 
-    q.append(si, sj)
+    q.append((si, sj))
     visited[si][sj] = 1
     distance = 0
 
     while q:
         r, c = q.popleft()
 
+        if distance == visited[r][c]:
+            return eatableList, distance - 1
 
+        dr = [-1, 1, 0, 0]
+        dc = [0, 0, -1, 1]
+        for d in range(4):
+            nr = r + dr[d]
+            nc = c + dc[d]
+            if 0 <= nr < N and 0 <= nc < N and not visited[nr][nc] and sharkSize >= arr[nr][nc]:
+                q.append((nr, nc))
+                visited[nr][nc] = visited[r][c] + 1
+                if sharkSize > arr[nr][nc] > 0:
+                    eatableList.append((nr, nc))
+                    distance = visited[nr][nc]
+
+    return eatableList, distance - 1
 
 N = int(input())
 arr = [list(map(int, input().split())) for _ in range(N)]
