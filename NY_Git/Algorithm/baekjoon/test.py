@@ -1,38 +1,18 @@
-N = int(input())
-TREE = {}
+def dfs(n, lst):
+    if n == M:
+        ansList.append(lst)
+        return
 
-ansPreorder = []
-ansInorder = []
-ansPostorder = []
+    for i in range(len(numList)):
 
-for _ in range(N):
-    root, left, right = input().split()
-    TREE[root] = [left, right]
 
-# 전위 순회
-def preOrder(root):
-    if root != '.':
-        ansPreorder.append(root)
-        preOrder(TREE[root][0])
-        preOrder(TREE[root][1])
+N, M = map(int, input().split())
+numList = sorted(list(map(int, input().split())))
 
-def inOrder(root):
-    if root != '.':
-        inOrder(TREE[root][0])
-        ansInorder.append(root)
-        inOrder(TREE[root][1])
+ansList = []
+visited = [0] * len(numList)
 
-def postOrder(root):
-    if root != '.':
-        postOrder(TREE[root][0])
-        postOrder(TREE[root][1])
-        ansPostorder.append(root)
+dfs(0, [])
 
-preOrder('A')
-inOrder('A')
-postOrder('A')
-
-print(TREE)
-print(''.join(map(str, ansPreorder)))
-print(''.join(map(str, ansInorder)))
-print(''.join(map(str, ansPostorder)))
+for i in ansList:
+    print(*i)
