@@ -1,5 +1,6 @@
 import sys
 input = sys.stdin.readline
+
 def dfs(node, cnt):
     visited[node] = 1
 
