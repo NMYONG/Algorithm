@@ -1,3 +1,0 @@
-lst = []
-
-print(lst == True)
