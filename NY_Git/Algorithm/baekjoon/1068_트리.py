@@ -1,44 +1,21 @@
-# 삭제된 노드에 visited를 -1로 바꿔주는 함수
-def delete(d):
-    if visited[d] == [0]:
-        return
+# 지울 노드와 지울 노드를 부모로 갖는 노드 -999
+def dfs(delete):
+    tree[delete] = -999
 
-    for c in adj[d]:
-        visited[c] = 0
-        dfs(c)
-
-    visited[d] = 0
-
-# 리프 노드의 개수를 찾는 함수
-def dfs(start):
-    global cnt
-
-    if adj[start] == []:
-        cnt += 1
-
-    for c in adj[start]:
-        if visited[c] != 0:
-            dfs(c)
+    for i in range(N):
+        if delete == tree[i]:
+            dfs(i)
 
 N = int(input())
-numList = list(map(int, input().split()))
+tree = list(map(int, input().split()))
 M = int(input())
-adj = [[] for _ in range(N)]
-visited = [[1] for _ in range(N)]
 
-cnt = 0 # 리프노드의 개수를 count
+dfs(M)
+count = 0
 
-# adj 배열 만들기(0번 노드부터 시작한다.)
-for i in range(len(numList)): # i = 0, 1, 2, 3, 4
-    if numList[i] == -1:
-        continue
-    else:
-        adj[numList[i]].append(i)
+# 삭제한 노드가 아니면서 다른 노드의 부모가 아닌 원소를 찾아 +1
+for i in range(N): # i = 0, 1, 2, 3, 4
+    if tree[i] != -999 and i not in tree:
+        count += 1
 
-delete(M)
-dfs(0)
-
-
-print(adj)
-print(visited)
-print(cnt)
+print(count)
