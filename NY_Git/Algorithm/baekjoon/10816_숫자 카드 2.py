@@ -18,3 +18,6 @@ for card in checkCard:
         print(dic[card], end=' ')
     else:
         print(0, end=' ')
+
+
+

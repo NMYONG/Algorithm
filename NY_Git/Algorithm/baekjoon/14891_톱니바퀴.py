@@ -37,3 +37,5 @@ for i in range(1, N+1):
     ans += gear[i][top[i]] * tbl[i]
 
 print(ans)
+
+
