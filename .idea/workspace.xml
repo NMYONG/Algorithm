@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e31a3b2a-ba8a-452e-a171-5c245327cd5d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/NY_Git/Algorithm/baekjoon/11651_좌표 정렬하기 2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NY_Git/Algorithm/baekjoon/2869_달팽이는 올라가고 싶다.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NY_Git/Algorithm/baekjoon/2275_부녀회장이 될테야.py" beforeDir="false" afterPath="$PROJECT_DIR$/NY_Git/Algorithm/baekjoon/2275_부녀회장이 될테야.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,8 +36,30 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/NY_Git/Algorithm/baekjoon" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
-  <component name="RunManager" selected="Python.2275_부녀회장이 될테야">
+  <component name="RunManager" selected="Python.2869_달팽이는 올라가고 싶다">
+    <configuration name="11651_좌표 정렬하기 2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="NMYONG_SSAFY" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/NY_Git/Algorithm/baekjoon" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NY_Git/Algorithm/baekjoon/11651_좌표 정렬하기 2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="2275_부녀회장이 될테야" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="NMYONG_SSAFY" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -50,6 +73,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NY_Git/Algorithm/baekjoon/2275_부녀회장이 될테야.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="2869_달팽이는 올라가고 싶다" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="NMYONG_SSAFY" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/NY_Git/Algorithm/baekjoon" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NY_Git/Algorithm/baekjoon/2869_달팽이는 올라가고 싶다.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -81,6 +125,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.2869_달팽이는 올라가고 싶다" />
+        <item itemvalue="Python.11651_좌표 정렬하기 2" />
         <item itemvalue="Python.2275_부녀회장이 될테야" />
         <item itemvalue="Python.7568_덩치" />
       </list>
