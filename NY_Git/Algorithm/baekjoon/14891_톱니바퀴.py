@@ -1,41 +1,42 @@
 N = 4
 gear = [[0] * 8] + [list(map(int, input())) for _ in range(N)]
+top = [0] * (N + 1)  # 12시 방향 톱니의 위치를 저장할 배열
+
 K = int(input())
-
-top = [0] * (N + 1) # 12시 방향
-
 for _ in range(K):
     idx, d = map(int, input().split())
 
-    # 1. idx 톱니를 회전
-    tempList = [(idx, 0)]
-    # 2. idx 우측방향 처리(같은 극성 나오면 탈출)
+    tempList = [(idx, 0)]  # 회전시킬 톱니의 후보 저장하기 위한 배열 생성
+
+    # 오른쪽 방향에 대해서
     for i in range(idx + 1, N + 1):
-        # 왼쪽 3시 극성 != 오른쪽 9시 극성 => 회전후보 추가
-        if gear[i-1][(top[i-1]+2) % 8] != gear[i][(top[i] + 6) % 8]:
-            tempList.append((i, (i-idx) % 2))
-        else: # 같은 극성이면 전달 안 됨
+        # 이전 톱니(i-1)의 12시방향 + 2 => i - 1 톱니의 오른쪽 극성
+        # 비교할 현재 톱니(i)의 12시 방향 + 6 => i 톱니의 왼쪽 극성
+        if gear[i - 1][(top[i - 1] + 2) % 8] != gear[i][(top[i] + 6) % 8]:  # 둘이 다르면
+            tempList.append((i, (i - idx) % 2))  # i번째 톱니, 회전 방향(0 or 1)
+        else:  # 극성이 다른 경우 중단
             break
-    # 3. idx 왼쪽방향 처리
+
+    # 왼쪽 방향에 대해서
     for i in range(idx - 1, 0, -1):
-        # 왼쪽 3시 극성 != 오른쪽 9시 극성 => 회전후보 추가
-        if gear[i][(top[i]+2) % 8] != gear[i+1][(top[i+1] + 6) % 8]:
-            tempList.append((i, (idx -i) % 2))
-        else: # 같은 극성이면 전달 안 됨
+        if gear[i][(top[i] + 2) % 8] != gear[i + 1][(top[i + 1] + 6) % 8]:
+            tempList.append((i, (idx - 1) % 2))
+        else:
             break
-    # 4. 실제 회전 처리
+
+
+
+    # 선택한 후보들 회전시키기
     for i, rot in tempList:
-        if rot == 0: # dix 톱니의 d와 같은 방향
-            top[i] = (top[i] - d + 8) % 8
+        if rot == 0: # 회전하려고 선택한 톱니와 같은 방향인 경우
+            top[i] = (top[i] - d + 8) % 8 # i번 톱니의 12시 방향을 가리키는 인덱스를 변경
         else:
             top[i] = (top[i] + d + 8) % 8
 
-# 점수 계산
+# 점수 계산하기
 ans = 0
-tbl = [0, 1, 2, 4, 8]
-for i in range(1, N+1):
-    ans += gear[i][top[i]] * tbl[i]
+table = [0, 1, 2, 4, 8]
+for i in range(1, N + 1): # 1번부터 N번까지의 톱니바퀴에 대해서
+    ans += gear[i][top[i]] * table[i]
 
 print(ans)
-
-
