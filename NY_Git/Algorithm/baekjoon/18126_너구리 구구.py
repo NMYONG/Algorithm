@@ -3,15 +3,15 @@ input = sys.stdin.readline
 sys.setrecursionlimit(10 ** 9)
 
 
-def dfs(start, length):
-    global maxLength
+def dfs(start, last):
+    global maxlast
 
     visited[start] = 1
 
     for i, j in tree[start]:
         if not visited[i]:
-            maxLength = max(maxLength, length + j)
-            dfs(i, length + j)
+            maxlast = max(maxlast, last + j)
+            dfs(i, last + j)
 
 
 N = int(input())  # 방의 개수
@@ -23,9 +23,9 @@ for _ in range(N - 1):
     tree[A].append((B, C))
     tree[B].append((A, C))
 
-maxLength = 0
+maxlast = 0
 visited = [0] * (N + 1)
 
 dfs(1, 0)
 
-print(maxLength)
+print(maxlast)

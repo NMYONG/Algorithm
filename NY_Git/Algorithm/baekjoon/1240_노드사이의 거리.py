@@ -1,14 +1,14 @@
-def dfs(start, end, sumLength):
-    global totalLength
+def dfs(start, end, sumlast):
+    global totallast
     if start == end:
-        totalLength = sumLength
+        totallast = sumlast
         return
 
     visited[start] = 1
 
     for c, l in adj[start]:
         if not visited[c]:
-            dfs(c, end, sumLength + l)
+            dfs(c, end, sumlast + l)
 
 
 N, M = map(int, input().split())
@@ -20,13 +20,13 @@ for _ in range(N - 1):
 
 for _ in range(M):
     visited = [0] * (N + 1)
-    totalLength = 0
+    totallast = 0
 
     start, end = map(int, input().split())
     if start > end:
         start, end = end, start
     dfs(start, end, 0)
 
-    print(totalLength)
+    print(totallast)
 
 # print(adj)

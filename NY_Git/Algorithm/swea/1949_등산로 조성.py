@@ -17,11 +17,11 @@ sys.stdin = open('1949_등산로 조성.txt', 'r')
 #
 #     visited[r][c] = 0  # 백트래킹
 
-def dfs(r, c, length, flag):
+def dfs(r, c, last, flag):
     global max_len
 
     visited[r][c] = 1
-    max_len = max(max_len, length)
+    max_len = max(max_len, last)
 
     for d in range(4):
         nr = r + dr[d]
@@ -34,7 +34,7 @@ def dfs(r, c, length, flag):
 
             else:
                 visited[nr][nc] = 1
-                dfs(nr, nc, length+1, True)
+                dfs(nr, nc, last+1, True)
 
 
 

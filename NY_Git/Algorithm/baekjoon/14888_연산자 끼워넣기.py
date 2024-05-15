@@ -17,7 +17,7 @@ def cal(op_lst, num_lst):
 def combination(n, lst):
     global max_num, min_num
 
-    if n == length:
+    if n == last:
         result = cal(lst, num_lst)
         if result >= max_num:
             max_num = result
@@ -27,7 +27,7 @@ def combination(n, lst):
         comb_lst.append(lst)
         return
 
-    for i in range(length):
+    for i in range(last):
         if not visited[i]:
             visited[i] = 1
             combination(n + 1, lst + [operator_lst[i]])
@@ -54,9 +54,9 @@ for i in range(4):
         for j in range(operator[3]):
             operator_lst.append('/')
 
-length = len(operator_lst)
+last = len(operator_lst)
 comb_lst = []
-visited = [0] * length
+visited = [0] * last
 
 max_num = -float('inf') # -10억이라 변수 선언 잘 해주기
 min_num = float('inf') # 10억
